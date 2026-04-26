@@ -1,3 +1,5 @@
+region_main = "us-east-1"
+
 name_terraform_state_bucket_s3 = "serverless-basic-terraform-state"
 tags_terraform_state_s3 = {
   Name        = "My bucket for state Terraform"
@@ -14,4 +16,4 @@ tags_state_dynamodb = {
   Environment = "Dev"
   Owner       = "Jhonnier"
 }
-
+billing_mode_state_dynamodb = "PAY_PER_REQUEST"

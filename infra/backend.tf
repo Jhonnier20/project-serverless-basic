@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = var.name_terraform_state_bucket_s3
+    bucket         = "serverless-basic-terraform-state"
     key            = "terraform.tfstate"
-    region         = var.region_main
-    dynamodb_table = var.state_dynamodb_table["name"]
+    region         = "us-east-1"
+    dynamodb_table = "serverless-table-state"
   }
 }

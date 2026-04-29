@@ -28,7 +28,7 @@ resource "aws_cloudfront_distribution" "feedback_cf_distribution" {
   default_cache_behavior {
     viewer_protocol_policy = "allow-all"
     allowed_methods        = ["GET", "HEAD"]
-    target_origin_id       = aws_s3_bucket.feedback_ui_app_s3.id
+    target_origin_id       = var.feedback_cf_origin_id
     cached_methods         = ["GET", "HEAD"]
   }
 }

@@ -31,7 +31,7 @@ resource "aws_api_gateway_integration" "feedback_api_integration_function" {
   rest_api_id             = aws_api_gateway_rest_api.feedback_rest_api.id
   resource_id             = aws_api_gateway_resource.feedback_api_resource.id
   http_method             = aws_api_gateway_method.feedback_api_post.http_method
-  type                    = "AWS"
+  type                    = "AWS_PROXY"
   integration_http_method = "POST"
   uri                     = aws_lambda_function.submit_feedback_function.invoke_arn
 }

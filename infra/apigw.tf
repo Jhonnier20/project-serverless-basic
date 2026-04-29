@@ -36,6 +36,18 @@ resource "aws_api_gateway_integration" "feedback_api_integration_function" {
   uri                     = aws_lambda_function.submit_feedback_function.invoke_arn
 }
 
+resource "aws_api_gateway_integration" "feedback_api_options_integration" {
+  rest_api_id = aws_api_gateway_rest_api.feedback_rest_api.id
+  resource_id = aws_api_gateway_resource.feedback_api_resource.id
+  http_method = aws_api_gateway_method.feedback_api_options.http_method
+  type        = "MOCK"
+
+  request_templates = {
+    "application/json" = "{\"statusCode\": 200}"
+  }
+}
+
+
 resource "aws_api_gateway_deployment" "feedback_api_deploy" {
   rest_api_id = aws_api_gateway_rest_api.feedback_rest_api.id
 

@@ -30,5 +30,12 @@ resource "aws_cloudfront_distribution" "feedback_cf_distribution" {
     allowed_methods        = ["GET", "HEAD"]
     target_origin_id       = var.feedback_cf_origin_id
     cached_methods         = ["GET", "HEAD"]
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
   }
 }

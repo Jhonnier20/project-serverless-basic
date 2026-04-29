@@ -55,9 +55,16 @@ resource "aws_api_gateway_deployment" "feedback_api_deploy" {
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.feedback_api_resource.id,
       aws_api_gateway_method.feedback_api_post.id,
+      aws_api_gateway_method.feedback_api_options.id,
       aws_api_gateway_integration.feedback_api_integration_function.id,
+      aws_api_gateway_integration.feedback_api_options_integration.id,
     ]))
   }
+
+  depends_on = [
+    aws_api_gateway_integration.feedback_api_integration_function,
+    aws_api_gateway_integration.feedback_api_options_integration,
+  ]
 
   lifecycle {
     create_before_destroy = true
